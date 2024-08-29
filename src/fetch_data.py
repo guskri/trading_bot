@@ -1,6 +1,5 @@
 import ccxt
 import pandas as pd
-from datetime import datetime, timedelta
 
 # Initialize the Binance exchange
 exchange = ccxt.binance()
@@ -34,5 +33,4 @@ df['timestamp'] = pd.to_datetime(df['timestamp'], unit='ms')
 print(f"Total records fetched: {len(df)}")
 print(df.head())  # Display the first few rows of the data
 
-# Save the data to a CSV file (optional)
 df.to_csv('./data/btc_usdt_5m_data.csv', index=False)
