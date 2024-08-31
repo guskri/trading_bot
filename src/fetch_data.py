@@ -34,3 +34,4 @@ print(f"Total records fetched: {len(df)}")
 print(df.head())  # Display the first few rows of the data
 
 df.to_csv('./data/btc_usdt_5m_data.csv', index=False)
+
