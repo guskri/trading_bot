@@ -5,9 +5,9 @@ import pandas as pd
 exchange = ccxt.binance()
 
 # Define the cryptocurrency pair and timeframe
-symbol = 'BTC/USDT'
+symbol = 'ETH/USDT'
 timeframe = '5m'  # 5-minute timeframe
-since = exchange.parse8601('2022-08-01T00:00:00Z')  # Start date
+since = exchange.parse8601('2021-08-01T00:00:00Z')  # Start date
 
 # Initialize an empty list to hold the data
 all_data = []
@@ -33,5 +33,5 @@ df['timestamp'] = pd.to_datetime(df['timestamp'], unit='ms')
 print(f"Total records fetched: {len(df)}")
 print(df.head())  # Display the first few rows of the data
 
-df.to_csv('./data/btc_usdt_5m_data.csv', index=False)
+df.to_csv('./data/eth_usdt_5m_data.csv', index=False)
 
