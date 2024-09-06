@@ -44,7 +44,7 @@ def main(file_path):
 
 if __name__ == "__main__":
     # Define the path to your CSV file
-    file_path = './data/eth_usdt_5m_data.csv'
+    file_path = './data/btc_usdt_5m_data.csv'
 
     # Run the main function
     main(file_path)

@@ -1,6 +1,6 @@
 import pandas as pd
 
-def simulate_trading_strategy(df, initial_capital=10000, risk_per_trade=0.02):
+def simulate_trading_strategy(df, initial_capital=10000, risk_per_trade=0.015):
     """
     Simulate the trading strategy using the generated buy and sell signals with a 2:1 risk-reward ratio.
     
@@ -37,7 +37,7 @@ def simulate_trading_strategy(df, initial_capital=10000, risk_per_trade=0.02):
             recent_swing_low = df.loc[:index, 'Swing_Low'].last_valid_index()
             if recent_swing_low is not None:
                 stop_loss = df.at[recent_swing_low, 'low'] * 0.95  # Allow more room for fluctuation
-                take_profit = entry_price + 2 * (entry_price - stop_loss)  # 2:1 risk-reward ratio
+                take_profit = entry_price + 1.5 * (entry_price - stop_loss)  # 2:1 risk-reward ratio
                 if stop_loss < entry_price:  # Ensure the stop loss is below the entry price
                     units = risk_amount / (entry_price - stop_loss)
                     position = 'long'
@@ -55,7 +55,7 @@ def simulate_trading_strategy(df, initial_capital=10000, risk_per_trade=0.02):
             recent_swing_high = df.loc[:index, 'Swing_High'].last_valid_index()
             if recent_swing_high is not None:
                 stop_loss = df.at[recent_swing_high, 'high'] * 1.05  # Allow more room for fluctuation
-                take_profit = entry_price - 2 * (stop_loss - entry_price)  # 2:1 risk-reward ratio
+                take_profit = entry_price - 1.5 * (stop_loss - entry_price)  # 2:1 risk-reward ratio
                 if stop_loss > entry_price:  # Ensure the stop loss is above the entry price
                     units = risk_amount / (stop_loss - entry_price)
                     position = 'short'
